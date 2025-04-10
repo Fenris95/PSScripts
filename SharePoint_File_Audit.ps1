@@ -136,7 +136,7 @@ foreach ($Site in $AllSites) {
         }
     }
     catch {
-        Write-Host "`n⚠️  Error accessing $($Site.Url): $_" -ForegroundColor Red
+        Write-Host "`n⚠Error accessing $($Site.Url): $_" -ForegroundColor Red
         $ErrorSites.Add([PSCustomObject]@{
             SiteURL      = $Site.Url
             ErrorMessage = $_.Exception.Message
@@ -146,7 +146,7 @@ foreach ($Site in $AllSites) {
 
 # --- Export results ---
 $Global:FileResults | Export-Csv -Path $OutputCSV -NoTypeInformation
-Write-Host "`n✅ File report exported to: $OutputCSV" -ForegroundColor Green
+Write-Host "`nFile report exported to: $OutputCSV" -ForegroundColor Green
 
 $ErrorSites | Export-Csv -Path $ErrorSitesCSV -NoTypeInformation
-Write-Host "`n✅ Sites with errors exported to: $ErrorSitesCSV" -ForegroundColor Red
+Write-Host "`nSites with errors exported to: $ErrorSitesCSV" -ForegroundColor Red
